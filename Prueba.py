@@ -53,16 +53,16 @@
                 print("\nOpción no válida. Intente de nuevo.")
 oper_lista()"""
 
-# Programa de gestión de tareas con funciones globales, locales y no locales
+"""# Programa de gestión de tareas con funciones globales, locales y no locales
 tareas = []  # Variable global para la lista de tareas
 
 def add_task(task):
-    """Agrega una nueva tarea a la lista global de tareas."""
+    Agrega una nueva tarea a la lista global de tareas.
     tareas.append(task)
     print(f"Tarea '{task}' agregada.")
 
 def remove_task(task):
-    """Elimina una tarea de la lista global de tareas, si existe."""
+    Elimina una tarea de la lista global de tareas, si existe.
     if task in tareas:
         tareas.remove(task)
         print(f"Tarea '{task}' eliminada.")
@@ -70,7 +70,7 @@ def remove_task(task):
         print(f"La tarea '{task}' no existe.")
 
 def list_tasks():
-    """Enumera todas las tareas almacenadas en la lista global de tareas."""
+    Enumera todas las tareas almacenadas en la lista global de tareas.
     if not tareas:
         print("No hay tareas pendientes.")
     else:
@@ -79,9 +79,9 @@ def list_tasks():
             print(f"{i}. {t}")
 
 def task_manager():
-    """Administra las operaciones de agregar, eliminar, listar y modificar tareas."""
+    Administra las operaciones de agregar, eliminar, listar y modificar tareas.
     def modify_task():
-        """Modifica la primera tarea en la lista de tareas (no local)."""
+    Modifica la primera tarea en la lista de tareas (no local).
         if tareas:
             print(f"Tarea actual: {tareas[0]}")
             nueva = input("Ingrese el nuevo valor para la primera tarea: ")
@@ -114,4 +114,89 @@ def task_manager():
         else:
             print("Opción no válida.")
 if __name__ == "__main__":
-    task_manager()
+    task_manager()"""
+
+# Programa de operaciones sobre una lista de cadenas con menú y funciones
+def print_by_letter(strings):
+    """Busca e imprime todas las cadenas que comienzan con una letra pedida al usuario."""
+    letra = input("Introduce la letra inicial: ")
+    print(f"Cadenas que comienzan con '{letra}':")
+    for s in strings:
+        if s.startswith(letra):
+            print(s)
+
+def count_substring(strings):
+    """Cuenta e imprime cuántas cadenas contienen una subcadena pedida al usuario."""
+    sub = input("Introduce la subcadena a buscar: ")
+    count = sum(sub in s for s in strings)
+    print(f"{count} cadenas contienen la subcadena '{sub}'")
+
+def longest_and_shortest(strings):
+    """Dice qué cadena es la más larga y cuál la más corta, junto con su longitud."""
+    if not strings:
+        print("La lista está vacía.")
+        return
+    longest = max(strings, key=len)
+    shortest = min(strings, key=len)
+    print(f"Cadena más larga: '{longest}' ({len(longest)} caracteres)")
+    print(f"Cadena más corta: '{shortest}' ({len(shortest)} caracteres)")
+
+def check_identity(strings):
+    """Comprueba si dos cadenas son el mismo objeto en memoria usando 'is'."""
+    if len(strings) < 2:
+        print("No hay suficientes cadenas para comparar.")
+        return
+    i = int(input(f"Introduce el índice de la primera cadena (1-{len(strings)}): ")) - 1
+    j = int(input(f"Introduce el índice de la segunda cadena (1-{len(strings)}): ")) - 1
+    if 0 <= i < len(strings) and 0 <= j < len(strings):
+        if strings[i] is strings[j]:
+            print("Son el mismo objeto en memoria.")
+        else:
+            print("No son el mismo objeto en memoria.")
+    else:
+        print("Índices no válidos.")
+
+def check_length_gt_10(strings):
+    """Comprueba si alguna cadena tiene más de 10 caracteres."""
+    for s in strings:
+        if len(s) > 10:
+            print(f"La cadena '{s}' tiene más de 10 caracteres.")
+            break
+    else:
+        print("Ninguna cadena tiene más de 10 caracteres.")
+
+def principal():
+    """Funcion principal que maneja el menú y las operaciones sobre la lista de cadenas."""
+    strings = []
+    n = int(input("¿Cuántas cadenas quieres introducir?: "))
+    for i in range(n):
+        strings.append(input(f"Introduce la cadena {i+1}: "))
+
+    menu = ("\nMenú de operaciones:\n"
+            "1. Imprimir cadenas que comiencen con una letra\n"
+            "2. Contar cadenas que contienen una subcadena\n"
+            "3. Encontrar la cadena más larga y más corta\n"
+            "4. Verificar si dos cadenas son el mismo objeto (is)\n"
+            "5. Verificar si alguna cadena tiene más de 10 caracteres\n"
+            "6. Salir")
+    print(menu)
+    while True:
+        opcion = input("\nSelecciona una opción: ")
+        match opcion:
+            case '1':
+                print_by_letter(strings)
+            case '2':
+                count_substring(strings)
+            case '3':
+                longest_and_shortest(strings)
+            case '4':
+                check_identity(strings)
+            case '5':
+                check_length_gt_10(strings)
+            case '6':
+                print("Saliendo del programa.")
+                break
+            case _ :
+                print("Opción no válida.")
+if __name__ == "__main__":
+    principal()
