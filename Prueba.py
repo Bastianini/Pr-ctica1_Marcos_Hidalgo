@@ -1,11 +1,11 @@
-def oper_lista():
-    """Esta función realiza varias operaciones con una lista de números:
+"""def oper_lista():
+    Esta función realiza varias operaciones con una lista de números:
     - Calcula la suma de todos los números.
     - Calcula la suma de numeros positivos y negativos por separado.
     - Encuentra el numero máximo y minimo de la lista.
     - Revisa que todos los numeros de la lista sean únicos.
     - Te indica si la lista tiene más numeros posistivos o negativos.
-    """
+    
     lista = [3, -5, 2, -8, 6, -3, 2, 9, -1, 4, -7, 5]
 
     def menu_operaciones():
@@ -51,4 +51,67 @@ def oper_lista():
                 break
             case _:
                 print("\nOpción no válida. Intente de nuevo.")
-oper_lista()
+oper_lista()"""
+
+# Programa de gestión de tareas con funciones globales, locales y no locales
+tareas = []  # Variable global para la lista de tareas
+
+def add_task(task):
+    """Agrega una nueva tarea a la lista global de tareas."""
+    tareas.append(task)
+    print(f"Tarea '{task}' agregada.")
+
+def remove_task(task):
+    """Elimina una tarea de la lista global de tareas, si existe."""
+    if task in tareas:
+        tareas.remove(task)
+        print(f"Tarea '{task}' eliminada.")
+    else:
+        print(f"La tarea '{task}' no existe.")
+
+def list_tasks():
+    """Enumera todas las tareas almacenadas en la lista global de tareas."""
+    if not tareas:
+        print("No hay tareas pendientes.")
+    else:
+        print("Tareas pendientes:")
+        for i, t in enumerate(tareas, 1):
+            print(f"{i}. {t}")
+
+def task_manager():
+    """Administra las operaciones de agregar, eliminar, listar y modificar tareas."""
+    def modify_task():
+        """Modifica la primera tarea en la lista de tareas (no local)."""
+        if tareas:
+            print(f"Tarea actual: {tareas[0]}")
+            nueva = input("Ingrese el nuevo valor para la primera tarea: ")
+            tareas[0] = nueva
+            print("Primera tarea modificada.")
+        else:
+            print("No hay tareas para modificar.")
+
+    while True:
+        print("\n--- MENÚ DE TAREAS ---")
+        print("1. Agregar tarea")
+        print("2. Eliminar tarea")
+        print("3. Mostrar lista de tareas")
+        print("4. Modificar primera tarea")
+        print("5. Salir")
+        opcion = input("Seleccione una opción: ")
+        if opcion == '1':
+            task = input("Ingrese la nueva tarea: ")
+            add_task(task)
+        elif opcion == '2':
+            task = input("Ingrese la tarea a eliminar: ")
+            remove_task(task)
+        elif opcion == '3':
+            list_tasks()
+        elif opcion == '4':
+            modify_task()
+        elif opcion == '5':
+            print("Saliendo del programa.")
+            break
+        else:
+            print("Opción no válida.")
+if __name__ == "__main__":
+    task_manager()
