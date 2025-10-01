@@ -19,3 +19,9 @@ Pregunta 3:
 - Tengo un problema en el ejercicio 2 de numeros primos ya que quiero que el usuario pueda meter el valor del límite de la lista de primos por teclado, pero al mostrar por pantalla me muestra el resultado por duplicado. Le he preguntado como solucionarlo.
 
 Su primera idea era que jupyter se liaba con la función main(), ya que al estar dividido en celdas, podia ser que ejecutara la celda automaticamente y que se llamara la función dos veces. Tras un rato discutiendo, ha llegado a la conclusión de que el problema era que jupyter por su forma de trabajar no maneja bien varios inputs seguidos y actua ejecutando la celda más de una vez. Está solución es correcta ya que he probado las mismas funciones con valores fijos y se imprimia el resultado solo una vez. 
+
+Pregunta 4:
+
+- Le he preguntado como hacer el menú del ejercicio 3
+
+Me ha respondido con un menú funcional, usando bucle while, pero yo esperaba que me contestara con la otra forma que vimos en clase, que era el match statement. Lo he tenido que buscar en los apuntes de clase y hasta que no le he dicho como se llama la instrucción no ha sido capaz de explicar.
